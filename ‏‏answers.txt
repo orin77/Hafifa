@@ -9,7 +9,7 @@ docker ps
 
  4.  to enter the running container i checked the container id using docker ps. then, using the docker exec cmmand, i opened the shell inside the running container:
 docker exec -it 16a91924ee07 /bin/bash
-then, once i am inside the container's shell, i use the command printenv t list all the env.  
+then, once i am inside the container's shell, i use the command env to list all the env.  
  
 5. ro kill the container i used the command:
 docker kill 16491924ee07
