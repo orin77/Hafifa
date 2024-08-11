@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+  namespace: orin
+data:
+  facts: |
+    - Fact 1: my first name is orin.
+    - Fact 2: my last name is elbilia.
+    - Fact 3: I am 19 years old.
