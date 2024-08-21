@@ -1,0 +1,15 @@
+1. for bulding and tagging the image i used:
+docker build -t hafifa:1.0 .
+
+2. for running a container with the image locally and exposing it with port 8080 i used:
+docker run -d -p 8080:8080 hafifa:1.0
+
+3. for checking which containers are currently runnin i used:
+docker ps 
+
+ 4.  to enter the running container i checked the container id using docker ps. then, using the docker exec cmmand, i opened the shell inside the running container:
+docker exec -it 16a91924ee07 /bin/bash
+then, once i am inside the container's shell, i use the command env to list all the env.  
+ 
+5. ro kill the container i used the command:
+docker kill 16491924ee07
