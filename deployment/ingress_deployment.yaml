@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-nginx-controller
+  namespace: orin
+  labels:
+    app: ingress-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-nginx
+  template:
+    metadata:
+      labels:
+        app: ingress-nginx
+    spec:
+      containers:
+      - name: controller
+        image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.33.0
+        ports:
+        - name: http
+          containerPort: 80
+        - name: https
+          containerPort: 443
+        args:
+        - /nginx-ingress-controller
+        - --configmap=orin/nginx-configuration
+        - --default-backend-service=orin/default-http-backend
+      serviceAccountName: default
