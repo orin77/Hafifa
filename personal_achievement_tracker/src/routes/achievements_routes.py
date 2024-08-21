@@ -14,3 +14,13 @@ async def create_achievement(achievement: Achievement):
     if not new_achievement:
         raise HTTPException(status_code=500, detail="Failed to retrieve the created achievement")
     return new_achievement
+
+
+@router.get('/achievements/{achievement_id}')
+async def get_achievement(achievement_id: str):
+    achievement = get_achievement(achievement_id)
+    if not achievement:
+        raise HTTPException(status_code=404, detail="Achievement not found")
+    return achievement
+
+
