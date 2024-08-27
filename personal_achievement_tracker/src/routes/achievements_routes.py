@@ -1,4 +1,6 @@
 from fastapi import APIRouter, HTTPException
+
+from src.models import achievement
 from src.models.achievement import Achievement
 from config.database import get_db
 from src.controllers.achievements_controller import create_achievement, get_achievement, delete_achievement, \
@@ -24,7 +26,7 @@ async def delete_achievement(achievement_id: str) -> str:
     return await delete_achievement(achievement_id)
 
 
-@router.post('/achievements/{achievement_id}')
-async def update_achievement(achievement_id: str):
+@router.put('/achievements/{achievement_id}', response_model=Achievement)
+async def update_achievement(achievement_id: str) -> achievement:
     return await update_achievement(achievement_id)
-   
+
